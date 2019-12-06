@@ -1,0 +1,13 @@
+* {
+
+    font-family: 'Montserrat', sans-serif;
+	background-color: linen;
+}
+button {background-color: orange}
+body { padding: 10px }
+h{ color:black }
+	p{ color : brown;
+background-color:inherit	}
+.red{color:red;text-decoration: line-through;}
+
+.green{color:green;text-decoration: none;}

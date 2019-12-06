@@ -1,26 +1,87 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.css';
+import './styles.css';
+
+
+class App extends React.Component {
+	saveToDoListItem = (toDoItem) => {
+		this.setState(
+		{toDoList:[
+			...this.state.toDoList,
+			{ name:toDoItem, done:false }
+		],
+		currentToDoItem:null
+		}
+		)
+	};
+	setCurrentToDoItem = (toDoItem) => {
+		this.setState(
+			{currentToDoItem:toDoItem}
+			);
+	}
+	
+	clickOnToDoItem = ( toDoListItem, index )  => {
+	
+		var tempToDoList =  this.state.toDoList
+		tempToDoList[index].done = tempToDoList[index].done? false:true;
+		this.setState( {toDoList: tempToDoList} )
+	}
+	
+	clearAll = () => {
+		this.setState({
+			currentToDoItem:null,
+			toDoList:[]
+		});
+		
+	}
+	
+	constructor(props){
+		super(props);
+		this.state={
+			currentToDoItem:null,
+			toDoList:[]
+		};
+		
+		
+		
+	}
+	render (){
+	  return (
+		<div> 
+			<h1>To Do List</h1>
+			<p><label>To Do Item  </label>
+			<input
+			value = {this.state.currentToDoItem? this.state.currentToDoItem: ""}
+			onChange={(event) => this.setCurrentToDoItem(event.target.value)}
+			></input></p>
+			<button
+				onClick={()=>this.saveToDoListItem(this.state.currentToDoItem)}
+			>
+				<p>add item</p>
+			</button>
+			<p>Current to do item: {this.state.currentToDoItem}</p>
+			<div>
+				<p>Items</p>
+				{
+				this.state.toDoList.map( (item, index) => <p className={item.done?"red":"green"} key={index} onClick= { (event) => this.clickOnToDoItem(event.target, index) }>{item.name}</p>   )
+				}
+			</div>
+			<button
+				onClick={()=>this.clearAll()}
+			>
+				<p>Clear All</p>
+			</button>			
+		</div>
+	  );
+	}
 }
 
 export default App;
+
+/*
+input
+show to do items
+
+
+*/
