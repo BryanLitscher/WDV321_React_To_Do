@@ -64,8 +64,14 @@ class App extends React.Component {
 			<div>
 				<p>Items</p>
 				{
-				this.state.toDoList.map( (item, index) => <p className={item.done?"red":"green"} key={index} onClick= { (event) => this.clickOnToDoItem(event.target, index) }>{item.name}</p>   )
-				}
+				this.state.toDoList.map( (item, index) => 
+					<p className={item.done?"done":"notdone"} 
+						key={index} 
+						onClick= { (event) => this.clickOnToDoItem(event.target, index) }>
+					{item.name}
+					</p>   
+						
+				)}
 			</div>
 			<button
 				onClick={()=>this.clearAll()}
