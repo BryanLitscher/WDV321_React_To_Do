@@ -23,7 +23,7 @@ class App extends React.Component {
 	
 	clickOnToDoItem = ( toDoListItem, index )  => {
 	
-		var tempToDoList =  this.state.toDoList
+		var tempToDoList = [...this.state.toDoList]
 		tempToDoList[index].done = tempToDoList[index].done? false:true;
 		this.setState( {toDoList: tempToDoList} )
 	}

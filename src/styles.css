@@ -8,6 +8,9 @@ body { padding: 10px }
 h{ color:black }
 	p{ color : brown;
 background-color:inherit	}
+
+.done:hover, .notdone:hover{ cursor:context-menu}
+
 .done{color:red;text-decoration: line-through;}
 
 .notdone{color:green;text-decoration: none;}
