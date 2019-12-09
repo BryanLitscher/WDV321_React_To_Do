@@ -21,8 +21,8 @@ class App extends React.Component {
 			);
 	}
 	
-	clickOnToDoItem = ( toDoListItem, index )  => {
-	
+
+	clickOnToDoItem = (  index )  => {
 		var tempToDoList = [...this.state.toDoList]
 		tempToDoList[index].done = tempToDoList[index].done? false:true;
 		this.setState( {toDoList: tempToDoList} )
@@ -67,7 +67,7 @@ class App extends React.Component {
 				this.state.toDoList.map( (item, index) => 
 					<p className={item.done?"done":"notdone"} 
 						key={index} 
-						onClick= { (event) => this.clickOnToDoItem(event.target, index) }>
+						onClick= { (event) => this.clickOnToDoItem(index) }>
 					{item.name}
 					</p>   
 						
